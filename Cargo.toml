@@ -1,0 +1,10 @@
+[package]
+
+name = "variance"
+version = "0.0.1"
+authors = ["Jonathan Reem <jonathan.reem@gmail.com>"]
+repository = "https://github.com/reem/rust-variance.git"
+description = "Helpers for establishing the variance of lifetimes and type parameters."
+readme = "README.md"
+license = "MIT"
+
