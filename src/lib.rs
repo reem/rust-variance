@@ -87,6 +87,14 @@ impl<T> Hash for Invariant<T> {
 #[derive(Copy, Clone, Default, Debug, PartialEq, PartialOrd, Eq, Ord, Hash)]
 pub struct InvariantLifetime<'id>(Invariant<&'id ()>);
 
+impl<'id> InvariantLifetime<'id> {
+    /// Create a new InvariantLifetime marker instance.
+    ///
+    /// All instances of InvariantLifetime with the same lifetime are equivalent.
+    #[inline]
+    pub fn new() -> Self { InvariantLifetime::default() }
+}
+
 fn _assert_bounds() {
     fn is_send<T: Send>() {}
     fn is_sync<T: Sync>() {}
