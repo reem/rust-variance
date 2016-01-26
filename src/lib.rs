@@ -12,8 +12,12 @@ use std::hash::{Hash, Hasher};
 use std::cmp::Ordering;
 
 /// A marker for forcing T to be considered invariant.
-// fn(T) is invariant in T
-pub struct Invariant<T>(PhantomData<fn(T)>);
+// *mut T is invariant in T
+pub struct Invariant<T>(PhantomData<*mut T>);
+
+// TODO: We have to explicitly list all OIBITS here, which is not really possible.
+unsafe impl<T> Send for Invariant<T> {}
+unsafe impl<T> Sync for Invariant<T> {}
 
 impl<T> Invariant<T> {
     /// Create a new Invariant marker instance.
